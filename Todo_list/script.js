@@ -1,30 +1,59 @@
 let todoArr = [];
 let taskslist = document.getElementById("todo-tasks");
 let totalTask = document.getElementById("total-task");
+let button = document.getElementById("button");
+let input = document.getElementById("input-box");
+
+button.addEventListener("click", printToDos);
+input.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    printToDos();
+  }
+});
 
 function printToDos() {
-  let inputValue = document.getElementById("input-box").value;
-  todoArr.push(inputValue);
-  document.getElementById("input-box").value = "";
+  let inputValue = input.value.trim();
+  if (!inputValue) {
+    alert("Fill the input to add task..");
+    return;
+  }
 
-  // console.log(todoArr)
+  todoArr.push(inputValue);
+  input.value = "";
+
+  let section = document.createElement("section");
+  section.classList.add("section-each-task");
 
   let div = document.createElement("div");
   div.classList.add("tasklist-div");
+  div.textContent = inputValue;
 
-  todoArr.map((task, index) => {
-    if (!inputValue) {
-      alert("Fill the input to add task..");
-    } else {
-      div.textContent = task;
-      taskslist.appendChild(div);
-      totalTask.innerHTML= `Total Pending Tasks : ${todoArr.length}`;
-    }
+  let delbtn = document.createElement("button");
+  delbtn.innerHTML = "Delete";
+  delbtn.classList.add("del-task");
+
+  delbtn.addEventListener("click", () => {
+    taskslist.removeChild(section);
+    todoArr.splice(todoArr.indexOf(inputValue), 1);
+    updateTotal();
   });
+
+  section.append(div);
+  section.append(delbtn);
+  taskslist.appendChild(section);
+
+  updateTotal();
 }
+
+function updateTotal() {
+  totalTask.innerHTML = `Total Pending Tasks : ${todoArr.length}`;
+}
+
 function clearAll() {
-  todoArr.splice(0, todoArr.length);
+  todoArr = [];
   taskslist.innerHTML = "";
-  totalTask.innerHTML = ""
+  totalTask.innerHTML = "";
 }
-console.log(todoArr)
+
+
+

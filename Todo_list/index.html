@@ -10,16 +10,14 @@
     <section class="container">
     <h1>Todo App</h1>
         <div class="todo-container">
-            <input type="text" id="input-box" placeholder="Write your task here..">
-            <input type="button" value="Add Task" onclick="printToDos()">
+            <input type="text" id="input-box" placeholder="Write your task here.." autofocus>
+            <input type="button" value="Add Task" id="button">
             <hr style="width: 100%; border-width: 2px;">
             <article id="todo-tasks">
                 <!-- TASKS WILL BE ADDED HERE -->
 
             </article>
-            <p id="total-task">
-
-            </p>
+            <p id="total-task"></p>
             <input type="button" value="Clear All" onclick="clearAll()">
         </div>
     </section>

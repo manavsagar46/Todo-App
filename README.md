@@ -18,7 +18,7 @@ A simple and stylish ToDo App built using **HTML**, **CSS**, and **JavaScript**.
 
 🔗 [Click here to view the live app](https://to-do-app-manav.netlify.app/)
 
-_(https://to-do-app-manav.netlify.app/)_
+_(https://todo-app-eta-liart-58.vercel.app/)_
 
 ---
 
